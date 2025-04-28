@@ -1,22 +1,27 @@
-from library_manager import LibraryManager
+from library_controller import LibraryController
+from admin_controller import AdminController
 
-manager = LibraryManager()
+def main():
+    print("Welcome to Library Management System")
+    library_controller = LibraryController()
+    admin_controller = AdminController()
 
-while True:
-    print("\nLibrary Management System")
-    print("1. Add Book")
-    print("2. List Books")
-    print("3. Exit")
-    choice = input("Enter your choice: ")
+    while True:
+        print("\n1. User Portal")
+        print("2. Admin Portal")
+        print("3. Exit")
 
-    if choice == '1':
-        book_id = input("Enter Book ID: ")
-        title = input("Enter Book Title: ")
-        author = input("Enter Author Name: ")
-        manager.add_book(book_id, title, author)
-    elif choice == '2':
-        manager.list_books()
-    elif choice == '3':
-        break
-    else:
-        print("Invalid choice. Try again.")
+        choice = input("Enter your choice: ")
+
+        if choice == '1':
+            library_controller.user_menu()
+        elif choice == '2':
+            admin_controller.admin_menu()
+        elif choice == '3':
+            print("Thank you for visiting the library!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
